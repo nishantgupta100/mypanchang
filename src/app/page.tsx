@@ -197,11 +197,17 @@ export default function DrikGoldStandard() {
                     ${d.festival?.type === 'muhurat' ? 'bg-pink-50' : ''}
                   `}
                 >
-                  <div className="flex justify-between items-start">
-                    <span className="text-2xl font-black opacity-20">{d.date}</span>
-                    <span className="text-[9px] font-black uppercase text-right leading-tight max-w-[50px]">{d.tithi}</span>
-                  </div>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center px-1 pb-2">
+                 <div className="flex justify-between items-start w-full gap-1 overflow-hidden">
+                  {/* Date: flex-shrink-0 ensures the number stays visible on small screens */}
+                   <span className="text-xl md:text-2xl font-black opacity-20 flex-shrink-0">
+                  {d.date}
+                 </span>
+  
+                  {/* Tithi: text-[7px] and max-w prevent overlap on phones */}
+                   <span className="text-[7px] md:text-[9px] font-black uppercase text-right leading-tight break-words max-w-[55%] text-[#8b4513]">
+                  {d.tithi}
+                   </span>
+                   </div>                  <div className="absolute inset-0 flex flex-col items-center justify-center px-1 pb-2">
                     {d.festival && (
                       <span className={`text-[10px] text-center font-black leading-tight
                         ${d.festival.type === 'fest' ? 'text-red-800' : d.festival.type === 'muhurat' ? 'text-pink-600' : 'text-green-800'}
